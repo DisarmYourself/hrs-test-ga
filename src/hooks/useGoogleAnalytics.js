@@ -1,14 +1,11 @@
 import { useEffect } from 'react';
 import ReactGA from 'react-ga4';
 
-export const trackingId = 'G-S7S3E0XTRH'
 const appVersion = 'v1'
+export const trackingId = 'G-S7S3E0XTRH'
 
-export const sendCustomGaEvent = (action, category) => {
-  ReactGA.event({
-    category: category || 'home-page',
-    action
-  })
+export const sendCustomGaEvent = (options) => {
+  ReactGA.event(options)
 }
 
 export const useGoogleAnalytics = () => {
