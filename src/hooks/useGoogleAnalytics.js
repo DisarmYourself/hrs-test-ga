@@ -9,18 +9,12 @@ export default function useGoogleAnalytics () {
     try {
       console.log({
         trackingId,
-        gaOptions: {
-          anonymizeIp: true,
-          clientId: 'test-client-id-1'
-        }
+        // gaOptions: {
+        //   anonymizeIp: true,
+        //   clientId: 'test-client-id-1'
+        // }
       });
-      ReactGA.initialize({
-        trackingId,
-        gaOptions: {
-          anonymizeIp: true,
-          clientId: 'test-client-id-1'
-        }
-      })
+      ReactGA.initialize(trackingId)
       ReactGA.set({ app_version: appVersion })
     } catch (error) {
       console.log("Error initializing Google Analytics", { Error: error });
