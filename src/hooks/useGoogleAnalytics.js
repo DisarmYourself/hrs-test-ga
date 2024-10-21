@@ -4,9 +4,12 @@ import ReactGA from 'react-ga4';
 export const trackingId = 'G-S7S3E0XTRH'
 const appVersion = 'v1'
 
-export const sendGAData = (type, data) => {
-  ReactGA.send({ hitType: type, ...data });
-};
+export const sendCustomGaEvent = (action, category) => {
+  ReactGA.event({
+    category: category || 'home-page',
+    action
+  })
+}
 
 export const useGoogleAnalytics = () => {
   useEffect(() => {
@@ -29,8 +32,12 @@ export const useGoogleAnalytics = () => {
       pagePath = location.pathname;
     }
 
+    const sendData = (type, data) => {
+      ReactGA.send({ hitType: type, ...data });
+    };
+
     setOption('app_version', appVersion);
-    sendGAData("pageview", { page: pagePath });
+    sendData("pageview", { page: pagePath });
   };
 
   return {

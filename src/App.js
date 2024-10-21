@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import GoogleAnalyticsProvider from './providers/GoogleAnalyticsProvider';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { sendGAData } from './hooks/useGoogleAnalytics';
+import { sendCustomGaEvent } from './hooks/useGoogleAnalytics';
 
 function App() {
   const [value, setValue] = useState(0)
@@ -9,13 +9,13 @@ function App() {
   const incValue = () => {
     setValue(value + 1)
     console.log(value);
-    sendGAData('increment_cte')
+    sendCustomGaEvent('increment_cte')
   }
 
   const decValue = () => {
     setValue(value - 1)
     console.log(value);
-    sendGAData('decrement_cte')
+    sendCustomGaEvent('decrement_cte')
   }
 
   return (
